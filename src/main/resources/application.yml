@@ -1,0 +1,65 @@
+server:
+  port: ${WB_PORT:8791}
+  address: ${WB_BIND:0.0.0.0}
+  shutdown: graceful
+  tomcat:
+    max-swallow-size: -1
+
+spring:
+  application:
+    name: workbench-cloud
+  datasource:
+    url: ${WB_DB_URL:jdbc:postgresql://127.0.0.1:55432/workbench}
+    username: ${WB_DB_USER:workbench}
+    password: ${WB_DB_PASSWORD:workbench}
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  servlet:
+    multipart:
+      enabled: false
+  jackson:
+    default-property-inclusion: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+wb:
+  auth:
+    access-ttl-seconds: ${WB_AUTH_ACCESS_TTL_SECONDS:900}
+    refresh-ttl-seconds: ${WB_AUTH_REFRESH_TTL_SECONDS:7776000}
+  sync:
+    session-ttl-seconds: ${WB_SYNC_SESSION_TTL_SECONDS:300}
+  files:
+    max-bytes: ${WB_FILES_MAX_BYTES:209715200}
+    quota-bytes: ${WB_FILES_QUOTA_BYTES:21474836480}
+    gc-enabled: ${WB_FILES_GC_ENABLED:true}
+    gc-grace-days: ${WB_FILES_GC_GRACE_DAYS:7}
+    gc-interval-ms: ${WB_FILES_GC_INTERVAL_MS:21600000}
+  blob:
+    backend: ${WB_BLOB_BACKEND:s3}
+    dir: ${WB_BLOB_DIR:./data/blobs}
+    s3:
+      endpoint: ${WB_S3_ENDPOINT:}
+      region: ${WB_S3_REGION:us-east-1}
+      bucket: ${WB_S3_BUCKET:workbench}
+      prefix: ${WB_S3_PREFIX:}
+      access-key-id: ${WB_S3_ACCESS_KEY_ID:}
+      secret-access-key: ${WB_S3_SECRET_ACCESS_KEY:}
+      force-path-style: ${WB_S3_FORCE_PATH_STYLE:true}
+      sse: ${WB_S3_SSE:}
+      allow-insecure: ${WB_S3_ALLOW_INSECURE:false}
+
+logging:
+  level:
+    root: INFO
+    com.dsh.workbench.cloud: INFO
