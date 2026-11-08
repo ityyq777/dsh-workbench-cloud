@@ -13,7 +13,7 @@
 
   <groupId>com.dsh</groupId>
   <artifactId>workbench-cloud</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name>workbench-cloud</name>
   <description>Workbench Cloud: protocol v2 sync and S3-backed file storage</description>
 

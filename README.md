@@ -11,7 +11,7 @@
 
 ## 快速启动
 
-要求：Java 21、Maven 3.9+、Docker（仅用于 PostgreSQL）。
+要求：Java 21、Maven 3.8+、Docker（仅用于 PostgreSQL）。
 
 ```bash
 cp .env.example .env
@@ -53,7 +53,7 @@ MinIO 的 S3 API 在宿主机上通常是 `http://127.0.0.1:9690`；如果服务
 服务器上 `git clone` 后直接启动，不打应用镜像：
 
 ```bash
-git clone https://github.com/ityyq777/dsh-workbench-cloud.git
+git clone https://gitee.com/yang7it/dsh-workbench-cloud.git
 cd dsh-workbench-cloud
 cp .env.example .env
 chmod 600 .env
