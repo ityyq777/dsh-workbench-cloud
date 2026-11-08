@@ -73,7 +73,7 @@ public class FilesController {
   }
 
   @GetMapping("/v1/files/blobs/{sha256}")
-  public ResponseEntity<?> get(@PathVariable String sha256,
+  public ResponseEntity<StreamingResponseBody> get(@PathVariable String sha256,
                                @RequestHeader(value = "Range", required = false) String rangeHeader,
                                HttpServletRequest request,
                                HttpServletResponse response) throws IOException {

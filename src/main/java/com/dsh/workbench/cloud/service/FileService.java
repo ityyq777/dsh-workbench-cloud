@@ -76,6 +76,7 @@ public class FileService {
       try {
         blobs.put(key, temp, total, contentType);
       } catch (Exception e) {
+        log.warn("blob store put failed for {}: {}", key, e.toString(), e);
         throw new ApiException(503, "blob_store_unavailable", "blob store unavailable");
       }
       long now = System.currentTimeMillis();
